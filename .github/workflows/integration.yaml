@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: rm -Rf vendor
-      - uses: php-actions/composer@v6
-       with: php_version: "8.2"
+      -name: Install dependencies
+      uses: php-actions/composer@v6
+       with:
+       php_version: "8.2"
       - run: ./vendor/bin/phpunit
