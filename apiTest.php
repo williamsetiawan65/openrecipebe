@@ -1,4 +1,5 @@
 <?php
+$coba = "coba";
 use PHPUnit\Framework\TestCase;
 
 class apiTest extends TestCase {
