@@ -13,7 +13,7 @@ private function _execute(array $params = array()) {
 
 public function testSomething() {
     $args = array('par1'=>'videoList', 'par2'=>'view', 'par3'=>'1', 'par4'=>'0');
-    $expected = '{"data":[{"videoId":"65536330-1ab8-11ef-890c-624c58d5222b","dateAdded":"2024-05-25 17:01:14","videoName":"rendang","videoLink":"rendang.com","ingredients":"meat","country":"indonesia","category":"main course","event":"bangga lokal","viewCount":"1500"}]}';
+    $expected = '{"datas":[{"videoId":"65536330-1ab8-11ef-890c-624c58d5222b","dateAdded":"2024-05-25 17:01:14","videoName":"rendang","videoLink":"rendang.com","ingredients":"meat","country":"indonesia","category":"main course","event":"bangga lokal","viewCount":"1500"}]}';
     $this->assertEquals($expected, $this->_execute($args)); // passes
 
     // $args = array('arg1'=>30, 'arg2'=>12);
