@@ -7,7 +7,7 @@ class apiTest extends TestCase {
 private function _execute(array $params = array()) {
     $_GET = $params;
     ob_start();
-    include 'api.php';
+    include '/home/runner/work/openrecipebe/openrecipebe/api.php';
     return ob_get_clean();
 }
 
