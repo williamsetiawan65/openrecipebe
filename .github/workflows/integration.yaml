@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: rm -Rf vendor
-      -name: Install dependencies
+      - name: Install dependencies
       uses: php-actions/composer@v6
        with:
        php_version: "8.2"
