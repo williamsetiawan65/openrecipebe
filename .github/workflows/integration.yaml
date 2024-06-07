@@ -8,5 +8,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: rm -Rf vendor
       - uses: php-actions/composer@v6
       - run: ./vendor/bin/phpunit
