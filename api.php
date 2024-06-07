@@ -8,7 +8,7 @@ $mode = "release"; // development / release
 if ($mode == "development") {
     $conn = mysqli_connect("localhost", "root", "", "openrecipe");
 } else if ($mode == "release") {
-    $conn = mysqli_connect("http://openrecipe.000webhostapp.com/", "id22255497_openrecipe", "Openrecipe@12", "id22255497_openrecipe");
+    $conn = mysqli_connect("localhost", "root", "", "openrecipe");
 }
 
 //Access-Control-Allow-Origin header with wildcard.
