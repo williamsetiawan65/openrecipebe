@@ -64,7 +64,7 @@ if ($mode == "development" || $mode == "release") {
     else if (isset($_GET["request"]) && $_GET["request"] == "videoList" && isset($_GET["option"]) && $_GET["option"] == "event") {
         if (isset($_GET["limit"]) && isset($_GET["offset"])) {
             if (isset($_GET["event"])) {
-                $query = mysqli_query($conn, "SELECT * FROM video WHERE event = '" . $_GET["event"] . "' LIMIT " . $_GET["limit"] . " OFFSET " . $_GET["offset"] .  " ORDER BY dateAdded DESC");
+                $query = mysqli_query($conn, "SELECT * FROM video WHERE event = '" . $_GET["event"] .  "' ORDER BY dateAdded DESC" . " LIMIT " . $_GET["limit"] . " OFFSET " . $_GET["offset"]);
             } else {
                 $errorContainer = 1;
             }
