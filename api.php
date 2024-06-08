@@ -8,7 +8,7 @@ $mode = "release"; // development / release
 if ($mode == "development") {
     $conn = mysqli_connect("localhost", "root", "", "openrecipe");
 } else if ($mode == "release") {
-    $conn = mysqli_connect("localhost", "root", "", "openrecipe");
+    $conn = mysqli_connect("localhost", "id22255497_openrecipe", "Openrecipe@12", "id22255497_openrecipe");
 }
 
 //Access-Control-Allow-Origin header with wildcard.
@@ -92,17 +92,49 @@ if ($mode == "development" || $mode == "release") {
         }
     }
 
-    // n page videos
-    elseif (isset($_GET["request"]) && $_GET["request"] == "videoList" && isset($_GET["option"]) && $_GET["option"] == "page") {
+    // n homepage videos
+    elseif (isset($_GET["request"]) && $_GET["request"] == "videoList" && isset($_GET["option"]) && $_GET["option"] == "homepage") {
         if (isset($_GET["limit"]) && isset($_GET["offset"])) {
-            if (isset($_GET["ingredients"]) && isset($_GET["country"]) && isset($_GET["category"])) {
-                $query = mysqli_query($conn, "SELECT * FROM video WHERE ingredients = '" . $_GET["ingredients"] . "' AND country = '" . $_GET["country"] . "' AND category = '" . $_GET["category"] . "' ORDER BY dateAdded DESC" . " LIMIT " . $_GET["limit"] . " OFFSET " . $_GET["offset"]);
+            if (isset($_GET["country"]) && isset($_GET["category"])) {
+                $query = mysqli_query($conn, "SELECT * FROM video WHERE country = '" . $_GET["country"] . "' AND category = '" . $_GET["category"] . "' ORDER BY dateAdded DESC" . " LIMIT " . $_GET["limit"] . " OFFSET " . $_GET["offset"]);
             } else {
                 $errorContainer = 1;
             }
         } else {
-            if (isset($_GET["ingredients"]) && isset($_GET["country"]) && isset($_GET["category"])) {
-                $query = mysqli_query($conn, "SELECT * FROM video WHERE ingredients = '" . $_GET["ingredients"] . "' AND country = '" . $_GET["country"] . "' AND category = '" . $_GET["category"] . "' ORDER BY dateAdded DESC");
+            if (isset($_GET["country"]) && isset($_GET["category"])) {
+                $query = mysqli_query($conn, "SELECT * FROM video WHERE country = '" . $_GET["country"] . "' AND category = '" . $_GET["category"] . "' ORDER BY dateAdded DESC");
+            } else {
+                $errorContainer = 1;
+            }
+        }
+        if ($errorContainer == 0) {
+            $result = ["data" => []];
+            while ($row = mysqli_fetch_assoc($query)) {
+                $result["data"][] = $row;
+            }
+            mysqli_close($conn);
+            $result = json_encode($result);
+            if ($result == '{"data":[]}') {
+                echo (json_encode(["data" => "data 0"]));
+            } else {
+                echo ($result);
+            }
+        } else if ($errorContainer == 1) {
+            echo (json_encode(["data" => "wrong request"]));
+        }
+    }
+
+    // n ingredient page videos
+    elseif (isset($_GET["request"]) && $_GET["request"] == "videoList" && isset($_GET["option"]) && $_GET["option"] == "ingpage") {
+        if (isset($_GET["limit"]) && isset($_GET["offset"])) {
+            if (isset($_GET["country"]) && isset($_GET["ingredients"])) {
+                $query = mysqli_query($conn, "SELECT * FROM video WHERE country = '" . $_GET["country"] . "' AND ingredients = '" . $_GET["ingredients"] . "' ORDER BY dateAdded DESC" . " LIMIT " . $_GET["limit"] . " OFFSET " . $_GET["offset"]);
+            } else {
+                $errorContainer = 1;
+            }
+        } else {
+            if (isset($_GET["country"]) && isset($_GET["ingredients"])) {
+                $query = mysqli_query($conn, "SELECT * FROM video WHERE country = '" . $_GET["country"] . "' AND ingredients = '" . $_GET["ingredients"] . "' ORDER BY dateAdded DESC");
             } else {
                 $errorContainer = 1;
             }
