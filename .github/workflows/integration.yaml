@@ -27,12 +27,12 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           exclude: |
-            - ./.git
-            - ./.github
-            - ./vendor
-            - ./api.php
-            - ./apiAjax.php
-            - ./apiTest.php
-            - ./composer.json
-            - ./composer.lock
-            - ./openrecipe.sql
+            - ./.git/
+            - ./.github/
+            - /vendor/
+            - /api.php
+            - /apiAjax.php
+            - /apiTest.php
+            - /composer.json
+            - /composer.lock
+            - /openrecipe.sql
