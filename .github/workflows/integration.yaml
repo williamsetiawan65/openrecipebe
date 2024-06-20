@@ -12,6 +12,8 @@ jobs:
       - uses: php-actions/composer@v6
       - run: ./vendor/bin/phpunit apiTest.php
   deploy:
+    needs:
+      - build-test
     if: needs.build-test.result == 'success'
     runs-on: ubuntu-latest
 
