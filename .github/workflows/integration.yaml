@@ -17,9 +17,6 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir : ./deploy/
           exclude:
-          - **/.git*
-          - **/.git*/**
-          - **/node_modules/**
           - api.php
 
   build-test:
@@ -51,7 +48,4 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir : ./deploy/
           exclude:
-          - **/.git*
-          - **/.git*/**
-          - **/node_modules/**
           - api-test.php
