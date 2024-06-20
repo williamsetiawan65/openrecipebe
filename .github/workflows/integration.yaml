@@ -32,7 +32,7 @@ jobs:
             - .github/
             - vendor/
             - api.php
-            - apiAjax.php
+            # - apiAjax.php
             - apiTest.php
             - composer.json
             - composer.lock
