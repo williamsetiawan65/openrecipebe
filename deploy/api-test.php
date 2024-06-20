@@ -2,7 +2,7 @@
 
 // version
 // ganti ke mode development untuk menggunakan konfigurasi database lokal, ganti ke mode release untuk menggunakan konfigurasi database di hosting
-$mode = "releases"; // development / release
+$mode = "release"; // development / release
 
 // database connection
 if ($mode == "development") {
