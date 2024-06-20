@@ -26,9 +26,9 @@ jobs:
           server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          exclude: .env*
-            - .git/
-            # - .git*/**
+          exclude:
+            - **/.git*
+            - **/.git*/**
             - .github/
             - vendor/
             - api.php
