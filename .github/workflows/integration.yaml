@@ -16,6 +16,8 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir : ./deploy/
+          exclude:
+          - api.php
 
   build-test:
     needs:
@@ -44,4 +46,6 @@ jobs:
           server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir : ./deploy/deploy-test/
+          local-dir : ./deploy/
+          exclude:
+          - api-test.php
