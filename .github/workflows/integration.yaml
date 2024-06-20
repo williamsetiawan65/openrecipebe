@@ -3,7 +3,24 @@ name: ci
 on: [push]
 
 jobs:
+  deploy-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          port: ${{ secrets.FTP_PORT }}
+          server-dir: ${{ secrets.FTP_DIR }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir : ./deploy/
+
   build-test:
+    needs:
+      - deploy-test
+    if: needs.deploy-test.result == 'success'
     runs-on: ubuntu-latest
 
     steps:
@@ -11,6 +28,7 @@ jobs:
       - run: rm -Rf vendor
       - uses: php-actions/composer@v6
       - run: ./vendor/bin/phpunit apiTest.php
+  
   deploy:
     needs:
       - build-test
@@ -26,4 +44,4 @@ jobs:
           server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir : ./deploy/
+          local-dir : ./deploy/deploy-test/
