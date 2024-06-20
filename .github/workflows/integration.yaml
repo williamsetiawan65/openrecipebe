@@ -27,10 +27,10 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           exclude: .env*
-            - .git
+            - .git/
             # - .git*/**
-            - .github
-            - vendor
+            - .github/
+            - vendor/
             - api.php
             - apiAjax.php
             - apiTest.php
