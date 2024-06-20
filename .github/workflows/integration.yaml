@@ -11,3 +11,27 @@ jobs:
       - run: rm -Rf vendor
       - uses: php-actions/composer@v6
       - run: ./vendor/bin/phpunit apiTest.php
+  deploy:
+    if: needs.build-test.result == "success"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          port: ${{ secrets.FTP_PORT }}
+          server-dir: ${{ secrets.FTP_DIR }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          exclude: .env*
+            - .git*
+            - .git*/**
+            - .github/*
+            - vendor/*
+            - api.php
+            - apiAjax.php
+            - apiTest.php
+            - composer.json
+            - composer.lock
+            - openrecipe.sql
