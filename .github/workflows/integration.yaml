@@ -16,11 +16,11 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir : ./deploy/
-          exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          api.php
+          exclude:
+          - **/.git*
+          - **/.git*/**
+          - **/node_modules/**
+          - api.php
 
   build-test:
     needs:
@@ -50,8 +50,8 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir : ./deploy/
-          exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          api-test.php
+          exclude:
+          - **/.git*
+          - **/.git*/**
+          - **/node_modules/**
+          - api-test.php
