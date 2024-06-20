@@ -27,8 +27,8 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           exclude:
-            - **/.git*
-            - **/.git*/**
+            - .git*
+            - .git*/**
             - .github/
             - vendor/
             - api.php
