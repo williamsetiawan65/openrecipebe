@@ -26,13 +26,4 @@ jobs:
           server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          exclude: |
-            - **/.git*
-            - **/.git*/**
-            - .github/
-            - vendor/
-            - api.php
-            - apiTest.php
-            - composer.json
-            - composer.lock
-            - openrecipe.sql
+          local-dir : ./deploy/
