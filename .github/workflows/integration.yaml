@@ -30,7 +30,7 @@ jobs:
             - .git*
             - .git*/**
             - .github/*
-            - vendor/*
+            - ./vendor/*
             - ./api.php
             - ./apiAjax.php
             - ./apiTest.php
