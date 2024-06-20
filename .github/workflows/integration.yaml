@@ -26,14 +26,15 @@ jobs:
           server-dir: ${{ secrets.FTP_DIR }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          exclude: .env*
+          exclude:
+            - .env*
             - .git*
             - .git*/**
             - .github/*
-            - ./vendor/*
-            - ./api.php
-            - ./apiAjax.php
-            - ./apiTest.php
-            - ./composer.json
-            - ./composer.lock
-            - ./openrecipe.sql
+            - vendor/*
+            - api.php
+            - apiAjax.php
+            - apiTest.php
+            - composer.json
+            - composer.lock
+            - openrecipe.sql
