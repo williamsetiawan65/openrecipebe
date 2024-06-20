@@ -7,7 +7,7 @@ class apiTest extends TestCase {
 private function _execute(array $params = array()) {
     $_GET = $params;
     ob_start();
-    include '/deploy/api.php';
+    include './deploy/api.php';
     return ob_get_clean();
 }
 
